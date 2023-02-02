@@ -29,7 +29,7 @@
           "Output": "./public",
           "Type": "GitHub",
           "BuildCommand": "npm run build",
-          "InstallCommand": "npm ci",
+          "InstallCommand": "npm i",
           "NPMRegistry": "https://registry.npmjs.org/"
         }
       },
