@@ -10,7 +10,7 @@
       },
       "LowCodeUnit": {
         "SourceControlLookup": "fork|github://fathym-it/gatsby-starter-blog",
-        "Version": "latest",
+        "Build": "latest",
         "Path": "lcu-github-artifacts-release.yml",
         "Type": "GitHub"
       },
@@ -47,8 +47,8 @@
       "Sources": {
         "fork|github://fathym-it/gatsby-starter-blog": {
           "DevOpsActionTriggerLookups": ["github-artifacts-release-gatsby"],
-          "Branches": ["main"],
-          "MainBranch": "main",
+          "Branches": ["master"],
+          "MainBranch": "master",
           "Organization": "fathym-it",
           "Repository": "gatsby-starter-blog",
           "Name": "github://fathym-it/gatsby-starter-blog",
