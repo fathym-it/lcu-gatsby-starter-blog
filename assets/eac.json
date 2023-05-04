@@ -1,60 +1,77 @@
 {
   "Applications": {
-    "$1": {
-      "Application": {
+    "{{$1}}-gatsby-starter-blog": {
+      "Details": {
         "Description": "A basic starting point for blogs built with Gatsby.",
         "Name": "Blog Starter with Gatsby - Forked Recipe"
       },
       "LookupConfig": {
         "PathRegex": "/.*"
       },
-      "LowCodeUnit": {
-        "SourceControlLookup": "fork|github://fathym-it/gatsby-starter-blog",
-        "Build": "latest",
-        "Path": "lcu-github-artifacts-release.yml",
-        "Type": "GitHub"
+      "Package": {
+        "Details": {
+          "Build": "latest",
+          "Path": "lcu-github-artifacts-release.yml"
+        },
+        "SourceControlLookup": "github://{{ORGANIZATION}}/gatsby-starter-blog",
+        "Type": "GitHubLowCodeUnit"
       },
       "Processor": {
-        "BaseHref": "/",
-        "DefaultFile": "index.html",
-        "Type": "DFS"
+        "Details": {
+          "BaseHref": "/",
+          "DefaultFile": "index.html"
+        },
+        "Type": "DFSProcessor"
       }
     }
   },
   "Environments": {
-    "$#.PrimaryEnvironment": {
+    "{{EaC.PrimaryEnvironment}}": {
       "Artifacts": {
         "gatsby-build-release": {
-          "Name": "Gatsby Build/Release",
-          "Output": "./public",
-          "Type": "GitHub",
-          "BuildCommand": "npm run build",
-          "InstallCommand": "npm i",
-          "NPMRegistry": "https://registry.npmjs.org/"
+          "Type": "GitHubArtifact",
+          "Details": {
+            "Name": "Gatsby Build/Release",
+            "Output": "./public",
+            "BuildCommand": "npm run build",
+            "InstallCommand": "npm ci",
+            "NPMRegistry": "https://registry.npmjs.org/"
+          }
         }
       },
       "DevOpsActions": {
         "github-artifacts-release-gatsby": {
-          "Name": "GitHub Artifacts - Release - Gatsby",
-          "Path": "lcu-github-artifacts-release.yml",
           "ArtifactLookups": ["gatsby-build-release"],
-          "Templates": [
-            "https://raw.githubusercontent.com/lowcodeunit/infrastructure/master/github/actions/artifacts/_header.hbs.yml",
-            "https://raw.githubusercontent.com/lowcodeunit/infrastructure/master/github/actions/artifacts/release-flow.yml"
-          ]
+          "Details": {
+            "Name": "GitHub Artifacts - Release - Gatsby",
+            "Path": "lcu-github-artifacts-release.yml",
+            "Templates": [
+              "https://raw.githubusercontent.com/lowcodeunit/infrastructure/master/github/actions/artifacts/_header.hbs.yml",
+              "https://raw.githubusercontent.com/lowcodeunit/infrastructure/master/github/actions/artifacts/release-flow.yml"
+            ]
+          }
         }
       },
       "Sources": {
         "fork|github://fathym-it/gatsby-starter-blog": {
           "DevOpsActionTriggerLookups": ["github-artifacts-release-gatsby"],
-          "Branches": ["master"],
-          "MainBranch": "master",
-          "Organization": "fathym-it",
-          "Repository": "gatsby-starter-blog",
-          "Name": "github://fathym-it/gatsby-starter-blog",
-          "Type": "GitHub"
+          "Details": {
+            "Branches": ["main"],
+            "MainBranch": "main",
+            "Organization": "{{ORGANIZATION}}",
+            "Repository": "gatsby-starter-blog",
+            "Name": "github://{{ORGANIZATION}}/gatsby-starter-blog"
+          },
+          "Type": "GitHubSourceControl"
         }
       }
+    }
+  },
+  "Projects": {
+    "{{PROJECT_LOOKUP}}": {
+      "ApplicationLookups": [
+        "{{$1}}-gatsby-starter-blog"
+      ]
     }
   }
 }

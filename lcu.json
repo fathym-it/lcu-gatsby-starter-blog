@@ -3,7 +3,19 @@
     "Name": "Blog Starter with Gatsby - Forked Recipe",
     "Description": "A customizable starter template for you to create a blog.",
     "Image": "https://www.fathym.com/img/starterblog.png",
-    "PreviewImage": "https://www.fathym.com/assets/images/gatsby-starter-blog.png",
-    "UsesGit": true
+    "PreviewImage": "https://www.fathym.com/assets/images/gatsby-starter-blog.png"
+  },
+  "Configurations": {
+    "Full": {
+      "Name": "Gatsby Starter Blog",
+      "Description": "Gatsby Starter Blog",
+      "Phases": [
+        {
+          "Name": "Setup Gatsby Starter Blog",
+          "Order": 1,
+          "Asset": "gatsby"
+        }
+      ]
+    }
   }
 }
