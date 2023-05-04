@@ -34,7 +34,7 @@
             "Name": "Gatsby Build/Release",
             "Output": "./public",
             "BuildCommand": "npm run build",
-            "InstallCommand": "npm ci",
+            "InstallCommand": "npm i",
             "NPMRegistry": "https://registry.npmjs.org/"
           }
         }
