@@ -56,8 +56,8 @@
         "fork|github://fathym-it/gatsby-starter-blog": {
           "DevOpsActionTriggerLookups": ["github-artifacts-release-gatsby"],
           "Details": {
-            "Branches": ["main"],
-            "MainBranch": "main",
+            "Branches": ["master"],
+            "MainBranch": "master",
             "Organization": "{{ORGANIZATION}}",
             "Repository": "gatsby-starter-blog",
             "Name": "github://{{ORGANIZATION}}/gatsby-starter-blog"
