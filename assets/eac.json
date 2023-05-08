@@ -24,8 +24,8 @@
   "Environments": {
     "$#.PrimaryEnvironment": {
       "Artifacts": {
-        "gatsby-build-release": {
-          "Name": "Gatsby Build/Release",
+        "gatsby-blog-build-release": {
+          "Name": "Gatsby Blog Build/Release",
           "Output": "./public",
           "Type": "GitHub",
           "BuildCommand": "npm run build",
@@ -34,10 +34,10 @@
         }
       },
       "DevOpsActions": {
-        "github-artifacts-release-gatsby": {
-          "Name": "GitHub Artifacts - Release - Gatsby",
+        "github-artifacts-release-gatsby-blog": {
+          "Name": "GitHub Artifacts - Release - Gatsby Blog",
           "Path": "lcu-github-artifacts-release.yml",
-          "ArtifactLookups": ["gatsby-build-release"],
+          "ArtifactLookups": ["gatsby-blog-build-release"],
           "Templates": [
             "https://raw.githubusercontent.com/lowcodeunit/infrastructure/master/github/actions/artifacts/_header.hbs.yml",
             "https://raw.githubusercontent.com/lowcodeunit/infrastructure/master/github/actions/artifacts/release-flow.yml"
@@ -46,7 +46,7 @@
       },
       "Sources": {
         "fork|github://fathym-it/gatsby-starter-blog": {
-          "DevOpsActionTriggerLookups": ["github-artifacts-release-gatsby"],
+          "DevOpsActionTriggerLookups": ["github-artifacts-release-gatsby-blog"],
           "Branches": ["master"],
           "MainBranch": "master",
           "Organization": "fathym-it",
